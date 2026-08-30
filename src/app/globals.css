@@ -1,26 +1,90 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --navy-950: #071E36;
+    --navy-900: #0B2948;
+    --navy-800: #123B63;
+    --navy-700: #1C4D7E;
+    --navy-600: #27629C;
+    --gold-600: #C5941F;
+    --gold-500: #D9A72C;
+    --gold-400: #E2B747;
+    --gold-200: #F1D98D;
+    --gold-100: #F4E5B5;
+    --gold-50: #FAF5E4;
+    --bg-light: #F7F9FC;
+    --text-dark: #17202A;
+    --text-muted: #667085;
+  }
+
+  body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom scrollbars for deals carousel and AI chat */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Brand styling utilities */
+.bg-navy-950 { background-color: var(--navy-950); }
+.bg-navy-900 { background-color: var(--navy-900); }
+.bg-navy-800 { background-color: var(--navy-800); }
+.bg-navy-700 { background-color: var(--navy-700); }
+.text-navy-900 { color: var(--navy-900); }
+.text-navy-800 { color: var(--navy-800); }
+.border-navy-900 { border-color: var(--navy-900); }
+
+.bg-gold-500 { background-color: var(--gold-500); }
+.bg-gold-100 { background-color: var(--gold-100); }
+.bg-gold-50 { background-color: var(--gold-50); }
+.text-gold-500 { color: var(--gold-500); }
+.text-gold-600 { color: var(--gold-600); }
+.border-gold-500 { border-color: var(--gold-500); }
+
+.hover\:bg-gold-600:hover { background-color: var(--gold-600); }
+.hover\:text-gold-600:hover { color: var(--gold-600); }
+
+/* Shimmer & pulsing animations for AI */
+@keyframes aiPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.9; }
+}
+
+@keyframes floatAnim {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-ai-pulse {
+  animation: aiPulse 2.5s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: floatAnim 3s infinite ease-in-out;
 }
